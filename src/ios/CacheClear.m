@@ -16,13 +16,18 @@
          NSFileManager *fm = [NSFileManager defaultManager];
          NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
          NSString *documentsDirectory = [paths firstObject];
+         NSLog(@"Clear - documentsDirectory: %@", documentsDirectory);
+        
          NSError *error = nil;
          for (NSString *file in [fm contentsOfDirectoryAtPath:documentsDirectory error:&error]) {
              BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", documentsDirectory, file] error:&error];
              if (!success || error) {
                  // it failed.
-                  NSLog(@"Clear - it failed");
+                  NSLog(@"Clear - failed");
                   NSLog(@"Clear - %@", error);
+             } else {
+                  NSLog(@"Clear - success file: %@", file);
+                  NSLog(@"Clear - error: %@", error);
              }
          }
         
