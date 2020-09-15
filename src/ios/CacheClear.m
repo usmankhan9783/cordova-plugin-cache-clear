@@ -21,11 +21,16 @@
              BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", documentsDirectory, file] error:&error];
              if (!success || error) {
                  // it failed.
+                  NSLog(@"Clear - it failed");
+                  NSLog(@"Clear - %@", error);
              }
          }
+        
+        NSLog(@"Clear - For end");
+        NSLog(@"Clear - %@", error);
+        
         /// our code
         
-
       [[NSURLCache sharedURLCache] removeAllCachedResponses];
       [self success];
     }];
