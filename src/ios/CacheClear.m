@@ -13,16 +13,16 @@
     [self.commandDelegate runInBackground:^{
         
         /// our code
-        NSFileManager *fm = [NSFileManager defaultManager];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths firstObject];
-        NSError *error = nil;
-        for (NSString *file in [fm contentsOfDirectoryAtPath:directory error:&error]) {
-            BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", directory, file] error:&error];
-            if (!success || error) {
-                // it failed.
-            }
-        }
+         NSFileManager *fm = [NSFileManager defaultManager];
+         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+         NSString *documentsDirectory = [paths firstObject];
+         NSError *error = nil;
+         for (NSString *file in [fm contentsOfDirectoryAtPath:documentsDirectory error:&error]) {
+             BOOL success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@%@", documentsDirectory, file] error:&error];
+             if (!success || error) {
+                 // it failed.
+             }
+         }
         /// our code
         
 
