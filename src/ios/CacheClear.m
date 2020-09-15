@@ -13,6 +13,10 @@
     [self.commandDelegate runInBackground:^{
         
         /// our code
+
+         [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
+         NSLog(@"Clear - NSUserDefaults");
+
          NSFileManager *fm = [NSFileManager defaultManager];
          NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
          NSString *documentsDirectory = [paths firstObject];
